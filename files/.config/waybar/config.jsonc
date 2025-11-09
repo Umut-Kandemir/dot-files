@@ -17,11 +17,12 @@
     "modules-right": [
         "hyprland/language",
         "pulseaudio",
-        "network",
+        // "network",
         "bluetooth",
         "cpu",
         "memory",
         "tray",
+        "custom/caffeine",
         "custom/power"
     ],
     // Modules configuration
@@ -50,7 +51,7 @@
         // }
     },
     "clock": {
-        "format": " {:%H:%M     %a %d.%m.%Y}",
+        "format": "  {:%H:%M      %a %d.%m.%Y}",
         "on-click": "gnome-clocks",
         // "format-alt": "{:%a %d.%m.%Y}  ",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
@@ -97,7 +98,7 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}%   {format_source}",
-        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth": "{volume}% {icon}   {format_source}",
         "format-bluetooth-muted": "󰝟  {icon}  {format_source}",
         "format-muted": "󰝟   {format_source}",
         "format-source": "{volume}% ",
@@ -132,20 +133,21 @@
     "custom/power": {
         "format" : "⏻ ",
 		"tooltip": false,
-		"on-click": "wlogout"
+		"on-click": "wlogout",
+		"on-click-right": "hyprctl dispatch killactive"
     },
     "custom/notification": {
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
-            "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-none": "",
-            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-inhibited-none": ""
+            "notification": "  <span foreground='red'><sup></sup></span>",
+            "none": "  ",
+            "dnd-notification": "  <span foreground='red'><sup></sup></span>",
+            "dnd-none": "  ",
+            "inhibited-notification": "  <span foreground='red'><sup></sup></span>",
+            "inhibited-none": "  ",
+            "dnd-inhibited-notification": "  <span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": " "
         },
         "return-type": "json",
         "exec-if": "which swaync-client",
@@ -168,4 +170,16 @@
         // "ignored-players": ["firefox"]
         // "on-click": "",
     },
+  "custom/caffeine": {
+    "format": "{icon}",
+    "return-type": "json",
+    "interval": 1,
+    "exec": "~/.config/hypr/Scripts/lock.sh status",
+    "on-click": "~/.config/hypr/Scripts/lock.sh toggle-caffeine",
+    "format-icons": {
+      "on": "☕",
+      "off": "💤"
+    },
+    "tooltip": true
+  },
 }

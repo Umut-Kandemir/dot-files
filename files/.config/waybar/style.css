@@ -61,6 +61,7 @@ button:hover {
 #bluetooth,
 #mpris,
 #language,
+#custom-caffeine,
 #tray {
     padding: 0 10px;
     color: #ffffff;
@@ -86,6 +87,10 @@ button:hover {
 
 label:focus {
     background-color: #000000;
+}
+
+#custom-caffeine.on {
+    background-color: #680000;
 }
 
 #network.disconnected {
